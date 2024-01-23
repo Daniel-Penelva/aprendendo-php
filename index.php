@@ -1,29 +1,68 @@
-Olá Mundo!!!
 <?php
-	echo 'Bem vindo php!!!';
-	echo "<h1>Bem Vindo com título H1</h1>";
-	
-	print '<p>Imprimindo com print</p>';
-	print "<small>Imprimindo com print com aspas duplas</small> <br />";
-	
-	// Comentário
-	# Comentario
-	/* Comentário */
-	
-	/* require:
-	Se você utiliza require para incluir um arquivo, o PHP considera o arquivo incluído como vital para o funcionamento do script. Se o PHP não conseguir 
-	encontrar ou incluir o arquivo, ele emitirá um erro fatal e interromperá a execução do script. A utilização de require é recomendada quando o arquivo a ser 
-	incluído contém código vital, e a execução do script não pode continuar sem ele.
-	*/
-	echo "<br /> <h1>Utilizando require</h1>";
-	require 'configuracao.php';
-	echo 'Este código será executado somente se o configuracao.php for incluído com sucesso.';
-	
-	/* include:
-	Por outro lado, include é menos restritivo. Se o PHP não conseguir encontrar ou incluir o arquivo usando include, ele emitirá um aviso, mas o script 
-	continuará a ser executado. O uso de include é mais adequado quando o arquivo a ser incluído contém código que é útil, mas não é estritamente necessário 
-	para a execução do script.
-	*/
-	echo "<h1>Utilizando include</h1>";
-	include 'configuracao.php';
-	echo 'Este código será executado independentemente de o configuracao.php ser incluído com sucesso ou não.';
+
+include 'Helpers.php';
+# declare(strict_types = 1)
+
+// Chamando a função sem parametro
+echo saudacao();
+
+echo '<br />';
+
+// chamando a função com parametro
+
+echo ola('João');
+
+echo '<br />';
+
+$nomeVisitante = 'Daniel';
+$OlaDaniel = ola($nomeVisitante);
+
+echo $OlaDaniel;
+
+echo '<br />';
+
+// chamando a função com mais de um parametro
+$cor = 'azul';
+$comidaPreferida = 'carne seca com abóbora';
+
+$resultado = corEComidaPreferida($cor, $comidaPreferida);
+echo $resultado;
+
+echo '<br />';
+
+// atribuindo outro valor na variavel $ponto
+$ponto = '...';
+
+$resultado = corEComidaPreferida($cor, $comidaPreferida, $ponto);
+echo $resultado;
+
+echo '<br />';
+
+// Tipos de dados
+$string = 'texto';
+$int = 10;
+$float = 9.99;
+$boolean = true;
+$nulo = null;
+
+var_dump($string);
+var_dump($float);
+
+// chamando tipo de dados pela função
+$resultado = somar(10, 40);
+echo "Resultado: ", $resultado;
+
+echo '<br />';
+
+$texto = 'Esse é um texto qualquer';
+echo textoQualquer($texto);
+
+echo '<br />';
+
+$name = "Daniel Penelva";
+echo nomeEIdade($name, 34);
+
+/*
+A declaração declare(strict_types=1); é usada para ativar o modo estrito de tipos no PHP. Isso significa que as verificações de tipo serão 
+realizadas de forma mais rigorosa durante a execução do script, especialmente para as declarações de tipo de parâmetro e de retorno em funções.
+*/
