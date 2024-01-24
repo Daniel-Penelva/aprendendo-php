@@ -1,37 +1,28 @@
 <?php
 
-// Lista de  funções e métodos - site: https://www.php.net/manual/pt_BR/indexes.functions.php
+// $variavel = (condição) ? valor_se_verdadeiro : valor_se_falso;
 
-function horasSao(): string
+function ativado($ativo)
 {
-    $hour = date('H');
-
-    if ($hour >= 0 && $hour < 5) {
-        $mensagem = "Boa madrugada";
-    } elseif ($hour >= 5 && $hour < 12) {
-        $mensagem = "Bom dia";
-    } elseif ($hour >= 13 && $hour < 18) {
-        $mensagem = "Boa tarde";
-    } else {
-        $mensagem = "Boa noite";
-    }
-
-    return $mensagem;
+    $variavel = ($ativo == true) ? "você está ativo" : "Você está inativado";
+    return $variavel;
 }
 
-function meuTexto(string $texto, int $limite, string $continue = '...'): string
-{
-
-    $textoLimpo = trim($texto);
-
-    if (strlen($textoLimpo) <= $limite) {
-        return $textoLimpo;
-    }
-
-    $resumirTexto = substr($textoLimpo, 0, strrpos(substr($textoLimpo, 0, $limite), ''));
-
-    return $resumirTexto . $continue;
+function maiorIdade(int $idade){
+    return $status = ($idade >= 18) ? "Você é maior de idade." : "Você é menor de idade.";
 }
 
-// substr() - Retorna uma parte de uma string.
-// strrpos() - encontra a posição do caracter.
+
+// Método formatar valor sem operação ternaria
+function formatarValor(float $valor): string{
+    return number_format($valor,2, ',', '.'); // o 2 é de duas casas decimais...
+}
+
+// Método formatar valor COM operação ternaria + concatenando com R$
+function formatarValorComTernario(float $valor = null): string{
+    return "R$ " . number_format(($valor ? $valor : 0), 2, ',', '.');
+}
+
+function formatarNumero(string $numero = null){
+    return number_format($numero ? $numero : 0, 0, '.', '.');
+}
