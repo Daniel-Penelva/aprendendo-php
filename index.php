@@ -94,3 +94,17 @@ if(true)
 }else{
     echo 'Erro';
 }
+
+echo '<hr>';
+
+// VÁRIAVEIS LOCAIS
+var_dump($_SERVER);
+
+echo '<hr>';
+var_dump(localhost());
+
+echo '<hr>';
+echo url('/admin');
+
+echo '<hr>';
+echo url2('admin');

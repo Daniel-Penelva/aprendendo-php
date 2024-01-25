@@ -64,8 +64,45 @@ function customizarFiltroUrl(string $url): bool
     if (!str_contains($url, '.')) { // tem que conter o ponto, senão tiver retorna false (!negação)
         return false;
     }
-    if(str_contains($url, 'http://') || str_contains($url, 'https://')){ // tem que conter o http:// ou o https://
+    if (str_contains($url, 'http://') || str_contains($url, 'https://')) { // tem que conter o http:// ou o https://
         return true;
     }
     return false;
 }
+
+// VÁRIAVEIS LOCAIS
+function localhost(): bool
+{
+    $servidor = filter_input(INPUT_SERVER, "SERVER_NAME");
+
+    if ($servidor == 'localhost') {
+        return true;
+    }
+    return false;
+}
+
+define('URL_DESENVOLVIMENTO', 'http://localhost/desenvolvimento.com');
+define('URL_PRODUCAO', 'http://localhost/producao.com');
+
+function url(string $url): string
+{
+    $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
+    $ambiente = ($servidor == 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
+    return $ambiente . $url;
+}
+
+// Ao invés de fazer assim '/admin', pode usar o método str_starts_with() para adicionar a barra "/", por exemplo:
+
+function url2(string $url): string
+{
+    $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
+    $ambiente = ($servidor == 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
+
+    if(str_starts_with($url, '/')){
+        return $ambiente . $url;
+    }
+    return $ambiente . '/' . $url;
+}
+
+
+
