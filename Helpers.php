@@ -1,28 +1,43 @@
 <?php
 
-// $variavel = (condição) ? valor_se_verdadeiro : valor_se_falso;
+/**
+ * Conta o tempo decorrido de uma data
+ * @param string $data
+ * @return string
+*/
 
-function ativado($ativo)
+function contarTempo(string $data)
 {
-    $variavel = ($ativo == true) ? "você está ativo" : "Você está inativado";
-    return $variavel;
-}
+    var_dump($data);
+    echo '<hr>';
+    echo $agora = date('Y-m-d H:i:s');
+    echo '<hr>';
+    echo $horaDeAgoraTotalSegundos = strtotime(date('Y-m-d H:i:s'));
+    echo '<hr>';
+    echo $TotalSegundoData = strtotime($data);
+    echo '<hr>';
+    $diferenca = $TotalSegundoData - $horaDeAgoraTotalSegundos;
+    var_dump('Diferença entre o total de segundos:' . $diferenca);
+    echo '<hr>';
+    $segundos = $diferenca;
+    var_dump('Diferença entre segundos:' . $segundos);
+    echo '<hr>';
+    $minutos = round($diferenca / 60);
+    var_dump('Diferença entre minutos:' . $minutos);
+    echo '<hr>';
+    $horas = round($diferenca / 3600);
+    var_dump('Diferença entre horas:' . $horas);
+    echo '<hr>';
+    $dia = round($diferenca / 86.400);
+    var_dump('Diferença entre dias:' . $dia);
 
-function maiorIdade(int $idade){
-    return $status = ($idade >= 18) ? "Você é maior de idade." : "Você é menor de idade.";
-}
+    echo '<hr>';
 
-
-// Método formatar valor sem operação ternaria
-function formatarValor(float $valor): string{
-    return number_format($valor,2, ',', '.'); // o 2 é de duas casas decimais...
-}
-
-// Método formatar valor COM operação ternaria + concatenando com R$
-function formatarValorComTernario(float $valor = null): string{
-    return "R$ " . number_format(($valor ? $valor : 0), 2, ',', '.');
-}
-
-function formatarNumero(string $numero = null){
-    return number_format($numero ? $numero : 0, 0, '.', '.');
+    if ($segundos <= 60) {
+        return 'agora';
+    } elseif ($minutos <= 60) {
+        return $minutos == 1 ? 'há um minuto' : 'há ' . $minutos . ' minutos';
+    } elseif ($horas <= 24) {
+        return $horas == 1 ? 'há 1 hora' : 'há ' . $horas . ' horas';
+    }
 }

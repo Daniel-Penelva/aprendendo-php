@@ -2,53 +2,17 @@
 
 include 'Helpers.php';
 
-echo ativado(true);
+// Definindo fuso horário padrão - Lista de fuso horário PHP - https://www.php.net/manual/pt_BR/timezones.php
 
-echo "<br />";
+$usandoTimezone = date_default_timezone_set('America/Manaus');
+echo 'Usando Timezone:'. $usandoTimezone;
 
-echo "Resultado: ", maiorIdade(15);
+echo '<br />';
 
-echo "<br />";
+$data = date("d/m/Y H:i:s");
+echo 'Formato data: ' . $data;
 
-// Saída direta concatenando com um ponto '.'
-echo "A pessoa pode entrar na festa? " . (maiorIdade(20) >= 18 ? "Sim" : "Não");
+echo '<br />';
 
-echo "<br />";
-
-echo "R$ " . formatarValor(50);
-
-echo "<br />";
-
-echo "R$ " . formatarValor(50000);
-
-echo "<br />";
-
-echo formatarValorComTernario(0);
-
-echo "<br />";
-
-echo formatarValorComTernario(10);
-
-echo "<br />";
-
-echo formatarValorComTernario(4000);
-
-echo "<br />";
-
-echo formatarNumero(0);
-
-echo "<br />";
-
-echo formatarNumero(100);
-
-echo "<br />";
-
-echo formatarNumero(1000);
-
-echo "<br />";
-
-echo formatarNumero(10000);
-
-echo "<br />";
-
-echo formatarNumero(1000000000);
+// Chamando o método
+echo contarTempo('2022-01-25 12:42:15');
