@@ -2,109 +2,111 @@
 
 include 'Helpers.php';
 
-// Definindo as constantes
-define('SITE_NOME', 'http://google.com');
-define("DESCRICAO_SITE", "Site de pesquisa web");
+// ARRAYS
 
-// Outra forma de definir constante
-const PROFISSAO = 'Desenvolvedor PHP';
+// 1. ARRAYS NUMÉRICOS
 
-// Definindo fuso horário padrão - Lista de fuso horário PHP - https://www.php.net/manual/pt_BR/timezones.php
+$numeros = array(1, 2, 3, 4, 5);
 
-$usandoTimezone = date_default_timezone_set('America/Manaus');
-echo 'Usando Timezone:' . $usandoTimezone;
+print_r($numeros);
+echo '<br />';
+var_dump($numeros);
+
+echo '<hr />';
+
+// 2. ARRAY ASSOCIATIVO
+$pessoa = array(
+    'nome' => 'João',
+    'idade' => 25,
+    'cidade' => 'Rio de Janeiro'
+);
+
+print_r($pessoa);
+
+echo '<hr />';
+
+// 3. ARRAY MULTIDIMENSIONAL
+$alunos = array(
+    array('nome' => 'Maria', 'nota' => 5.7),
+    array('nome' => 'Renato', 'nota' => 6.9),
+    array('nome' => 'Biana', 'nota' => 9.1)
+);
+
+print_r($alunos);
+
+echo '<hr />';
+
+// 4. ADICIONAR ELEMENTO NO FINAL DO ARRAY
+
+$frutas = array('maçã', 'banana');
+$frutas[] = 'laranja';
+print_r($frutas);
+
+echo '<hr />';
+
+// 5. ITERAR POR UM ARRAY
+
+$cores = array('vermelho', 'verde', 'azul');
+
+foreach ($cores as $cor) {
+    echo $cor . " ";
+}
+// Saída: vermelho verde azul
+
+echo '<hr />';
+
+// 6. CONTAR O NÚMERO DE ELEMENTOS EM UM ARRAY
+
+$animais = array('cachorro', 'gato', 'peixe');
+$quantidade = count($animais);
+echo $quantidade;  // Saída: 3
+
+echo '<hr />';
+
+// 7. ENCONTRAR UM ELEMENTO EM UM ARRAY
+$frutas = array('maçã', 'banana', 'laranja');
+$posicao = array_search('banana', $frutas);
+echo $posicao;  // Saída: 1
+
+echo '<hr />';
+
+// 8. FILTRAR ELEMENTOS EM UM ARRAY
+
+$idades = array(25, 18, 30, 22, 35, 17, 56);
+$adultos = array_filter($idades, function ($idade) {
+    return $idade >= 18;
+});
+print_r($adultos);
+
+echo '<hr />';
+
+// 9. TRANSFORMAR UM ARRAY EM STRING
+
+$nomes = array('João', 'Maria', 'Carlos');
+$nomesString = implode(', ', $nomes);
+echo $nomesString;  // Saída: João, Maria, Carlos
+
+echo '<hr />';
+
+// 10. CRIAR ARRAY A PARTIR DE STRING
+
+$frutasString = 'maçã, banana, laranja';
+$frutasArray = explode(', ', $frutasString);
+print_r($frutasArray);
+
+echo '<hr />';
+
+// 11. PODE UTILIZAR COLCHETES 
+$carros = ['Mustang', 'Ferrari', 'Porsche'];
+print_r($carros);
 
 echo '<br />';
 
-$data = date("d/m/Y H:i:s");
-echo 'Formato data: ' . $data;
+foreach($carros as $listaCarros){
+    echo $listaCarros . '<br />';
+}
 
-echo '<br />';
+echo '<hr />';
 
 // Chamando o método
-echo contarTempo('2022-01-25 12:42:15');
-
-echo '<hr>';
-
-// Tipos de Filtros - Email 
-echo '<br />' . 'Função Validar Email:';
-echo '<br />';
-var_dump(validarEmail('teste'));
-echo '<br />';
-var_dump(validarEmail('teste@'));
-echo '<br />';
-var_dump(validarEmail('teste@gmail'));
-echo '<br />';
-var_dump(validarEmail('teste@gmail.com'));
-
-echo '<hr>';
-
-// Outro exemplo de validação de email
-$email = 'd4n.andrade@gmail.com';
-
-if (validarEmail($email)) {
-    echo 'Email válido: ' . $email;
-} else {
-    echo 'Email inválido';
-}
-
-
-// Tipos de Filtros - URL
-echo '<hr>';
-echo '<br />' . 'Função Validar URL:';
-echo '<br />';
-var_dump(validarUrl('teste'));
-echo '<br />';
-var_dump(validarUrl('teste.com'));
-echo '<br />';
-var_dump(validarUrl('http://teste.com'));
-echo '<br />';
-echo '<hr>';
-
-// Filtro url customizado
-$url_1 = 'http://teste.com.br';
-$url_2 = 'teste.com.br';
-var_dump(customizarFiltroUrl($url_1));
-echo '<br />';
-var_dump(customizarFiltroUrl($url_2));
-
-echo '<br />';
-echo '<hr>';
-
-// Chamando as funções das constantes da define
-echo SITE_NOME;
-echo '<br />';
-echo DESCRICAO_SITE;
-
-// Chamando as funções das constantes da const
-echo '<br />';
-echo PROFISSAO;
-
-// criando constant utilizando a função constant()
-echo '<br />';
-echo constant('PROFISSAO');
-echo '<br />';
-
-// OBS. Não pode haver constantes com o mesmo nome da variável.
-// OBS. É possivel utilizar constantes em estrutura de controle IF apenas utilizando o define, por exemplo:
-if(true)
-{
-    define('LINGUAGEM_PROGRAMACAO', 'PHP');
-    echo LINGUAGEM_PROGRAMACAO;
-}else{
-    echo 'Erro';
-}
-
-echo '<hr>';
-
-// VÁRIAVEIS LOCAIS
-var_dump($_SERVER);
-
-echo '<hr>';
-var_dump(localhost());
-
-echo '<hr>';
-echo url('/admin');
-
-echo '<hr>';
-echo url2('admin');
+echo dataAtual();
