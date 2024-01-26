@@ -2,111 +2,93 @@
 
 include 'Helpers.php';
 
-// ARRAYS
+// SWITCH
 
-// 1. ARRAYS NUMÉRICOS
+// Exemplo básico
 
-$numeros = array(1, 2, 3, 4, 5);
+$diaDaSemana = date('w');
 
-print_r($numeros);
-echo '<br />';
-var_dump($numeros);
-
-echo '<hr />';
-
-// 2. ARRAY ASSOCIATIVO
-$pessoa = array(
-    'nome' => 'João',
-    'idade' => 25,
-    'cidade' => 'Rio de Janeiro'
-);
-
-print_r($pessoa);
-
-echo '<hr />';
-
-// 3. ARRAY MULTIDIMENSIONAL
-$alunos = array(
-    array('nome' => 'Maria', 'nota' => 5.7),
-    array('nome' => 'Renato', 'nota' => 6.9),
-    array('nome' => 'Biana', 'nota' => 9.1)
-);
-
-print_r($alunos);
-
-echo '<hr />';
-
-// 4. ADICIONAR ELEMENTO NO FINAL DO ARRAY
-
-$frutas = array('maçã', 'banana');
-$frutas[] = 'laranja';
-print_r($frutas);
-
-echo '<hr />';
-
-// 5. ITERAR POR UM ARRAY
-
-$cores = array('vermelho', 'verde', 'azul');
-
-foreach ($cores as $cor) {
-    echo $cor . " ";
-}
-// Saída: vermelho verde azul
-
-echo '<hr />';
-
-// 6. CONTAR O NÚMERO DE ELEMENTOS EM UM ARRAY
-
-$animais = array('cachorro', 'gato', 'peixe');
-$quantidade = count($animais);
-echo $quantidade;  // Saída: 3
-
-echo '<hr />';
-
-// 7. ENCONTRAR UM ELEMENTO EM UM ARRAY
-$frutas = array('maçã', 'banana', 'laranja');
-$posicao = array_search('banana', $frutas);
-echo $posicao;  // Saída: 1
-
-echo '<hr />';
-
-// 8. FILTRAR ELEMENTOS EM UM ARRAY
-
-$idades = array(25, 18, 30, 22, 35, 17, 56);
-$adultos = array_filter($idades, function ($idade) {
-    return $idade >= 18;
-});
-print_r($adultos);
-
-echo '<hr />';
-
-// 9. TRANSFORMAR UM ARRAY EM STRING
-
-$nomes = array('João', 'Maria', 'Carlos');
-$nomesString = implode(', ', $nomes);
-echo $nomesString;  // Saída: João, Maria, Carlos
-
-echo '<hr />';
-
-// 10. CRIAR ARRAY A PARTIR DE STRING
-
-$frutasString = 'maçã, banana, laranja';
-$frutasArray = explode(', ', $frutasString);
-print_r($frutasArray);
-
-echo '<hr />';
-
-// 11. PODE UTILIZAR COLCHETES 
-$carros = ['Mustang', 'Ferrari', 'Porsche'];
-print_r($carros);
-
-echo '<br />';
-
-foreach($carros as $listaCarros){
-    echo $listaCarros . '<br />';
+switch ($diaDaSemana) {
+    case 1:
+        echo 'Domingo';
+        break;
+    case 2:
+        echo 'Segunda-feira';
+        break;
+    case 3:
+        echo 'Terça-feira';
+        break;
+    case 4:
+        echo 'Quarta-feira';
+        break;
+    case 5:
+        echo 'Quinta-feira';
+        break;
+    case 6:
+        echo 'Sexta-feira';
+        break;
+    case 7:
+        echo 'Sábado';
+        break;
+    default:
+        echo 'dia inválido';
 }
 
 echo '<hr />';
 
-// Chamando o método
-echo dataAtual();
+// Exemplo com Múltiplas Condições
+
+$tipoAnimal = "gato";
+
+switch ($tipoAnimal) {
+    case "cachorro":
+    case "gato":
+        echo "Animal doméstico";
+        break;
+    case "leão":
+    case "tigre":
+    case "elefante":
+        echo "Animal selvagem";
+        break;
+    default:
+        echo "Tipo de animal desconhecido";
+}
+
+echo '<hr />';
+
+// Exemplo com Fall-Through
+
+$numero = 2;
+
+switch ($numero) {
+    case 1:
+    case 2:
+    case 3:
+        echo "O número é 1, 2 ou 3";
+        break;
+    case 4:
+        echo "O número é 4";
+        break;
+    default:
+        echo "Número desconhecido";
+}
+
+echo '<hr />';
+
+// Exemplo de switch com condicão de controle
+
+$nota = 5.0;
+
+switch ($nota) {
+    case $nota >= 0 && $nota < 5:
+        echo 'Você está reprovado - nota: ' . $nota;
+        break;
+    case $nota >= 5 && $nota < 7:
+        echo 'Você está em recuperação - nota: ' . $nota;
+        break;
+    case $nota >= 7 && $nota <= 10:
+        echo 'Você está aprovado - nota: ' . $nota;
+        break;
+    default:
+    echo 'nota inválida';
+}
