@@ -2,93 +2,67 @@
 
 include 'Helpers.php';
 
-// SWITCH
+/* MATCH  - A estrutura de controle match foi introduzida no PHP 8.0 para facilitar comparações de valores em uma expressão mais concisa e semelhante a um switch.*/
 
-// Exemplo básico
+// Exemplo Básico 1
 
+$diaDaSemana = 3;
+
+$resultado = match ($diaDaSemana) {
+    1 => "Domingo",
+    2 => "Segunda-feira",
+    3 => "Terça-feira",
+    4 => "Quarta-feira",
+    5 => "Quinta-feira",
+    6 => "Sexta-feira",
+    7 => "Sábado",
+    default => "Dia inválido",
+};
+
+echo $resultado;
+
+echo '<br />';
+
+// Exemplo Básico 2 - do tipo string
 $diaDaSemana = date('w');
 
-switch ($diaDaSemana) {
-    case 1:
-        echo 'Domingo';
-        break;
-    case 2:
-        echo 'Segunda-feira';
-        break;
-    case 3:
-        echo 'Terça-feira';
-        break;
-    case 4:
-        echo 'Quarta-feira';
-        break;
-    case 5:
-        echo 'Quinta-feira';
-        break;
-    case 6:
-        echo 'Sexta-feira';
-        break;
-    case 7:
-        echo 'Sábado';
-        break;
-    default:
-        echo 'dia inválido';
-}
+$resultado = match ($diaDaSemana) {
+    '1' => "Domingo",
+    '2' => "Segunda-feira",
+    '3' => "Terça-feira",
+    '4' => "Quarta-feira",
+    '5' => "Quinta-feira",
+    '6' => "Sexta-feira",
+    '7' => "Sábado",
+    default => "Dia inválido",
+};
+
+echo $resultado;
 
 echo '<hr />';
 
-// Exemplo com Múltiplas Condições
+// Exemplo com Condições Adicionais
 
 $tipoAnimal = "gato";
 
-switch ($tipoAnimal) {
-    case "cachorro":
-    case "gato":
-        echo "Animal doméstico";
-        break;
-    case "leão":
-    case "tigre":
-    case "elefante":
-        echo "Animal selvagem";
-        break;
-    default:
-        echo "Tipo de animal desconhecido";
-}
+$resultado = match ($tipoAnimal) {
+    "cachorro", "gato" => "Animal doméstico",
+    "leão", "tigre", "elefante" => "Animal selvagem",
+    default => "Tipo de animal desconhecido",
+};
+
+echo $resultado;
 
 echo '<hr />';
 
-// Exemplo com Fall-Through
+// Exemplo com Expressões Mais Complexas
 
 $numero = 2;
 
-switch ($numero) {
-    case 1:
-    case 2:
-    case 3:
-        echo "O número é 1, 2 ou 3";
-        break;
-    case 4:
-        echo "O número é 4";
-        break;
-    default:
-        echo "Número desconhecido";
-}
+$resultado = match (true) {
+    $numero >= 1 && $numero <= 3 => "O número é 1, 2 ou 3",
+    $numero == 4 => "O número é 4",
+    default => "Número desconhecido",
+};
 
-echo '<hr />';
-
-// Exemplo de switch com condicão de controle
-
-$nota = 5.0;
-
-switch ($nota) {
-    case $nota >= 0 && $nota < 5:
-        echo 'Você está reprovado - nota: ' . $nota;
-        break;
-    case $nota >= 5 && $nota < 7:
-        echo 'Você está em recuperação - nota: ' . $nota;
-        break;
-    case $nota >= 7 && $nota <= 10:
-        echo 'Você está aprovado - nota: ' . $nota;
-        break;
-    default:
-    echo 'nota inválida';
-}
+echo $resultado;
