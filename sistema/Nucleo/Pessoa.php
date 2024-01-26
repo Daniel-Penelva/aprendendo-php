@@ -53,4 +53,24 @@ class Pessoa
     {
         return "Nome: {$this->nome}, Idade: {$this->idade}, Cidade: {$this->cidade}";
     }
+
+    // Métodos para encadeamento de métodos
+    public function definirNome($nome): Pessoa
+    {
+        $this->nome = $nome; // recebe o parâmetro $nome
+        return $this;
+    }
+
+    public function definirIdade($idade): Pessoa
+    {
+        $this->idade = $idade;
+        return $this;
+    }
+
+    public function definirCidade($cidade)  // Repare que não precisa atribuir o tipo Pessoa
+    {
+        $this->cidade = $cidade;
+        return $this;
+    }
+
 }

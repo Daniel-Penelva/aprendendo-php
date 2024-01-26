@@ -29,3 +29,13 @@ $pessoa1->__construct("Gabriela", 23, "São Paulo");
 
 // Chamando o método exibirInformacoes da instância criada
 echo $pessoa1->exibirInformacao();
+
+echo '<hr />';
+
+// Exibindo os métodos para encadeamento de métodos
+$pessoa2 = new Pessoa();
+
+echo $pessoa2->definirNome("Bolsonaro")
+        -> definirIdade(68)
+        -> definirCidade("Minas Gerais")
+        -> exibirInformacao();
