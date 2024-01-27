@@ -12,9 +12,9 @@ class Pessoa
     // Construtor que aceita argumentos
     public function __construct($nome = '', $idade = 0, $cidade = '')
     {
-        $this->nome = $nome;
-        $this->idade = $idade;
-        $this->cidade = $cidade;
+        $this->nome = (string) $nome; // Pode declarar o tipo do atributo
+        $this->idade = (int) $idade;
+        $this->cidade = (string) $cidade;
     }
 
     // Métodos setters e getters
@@ -71,6 +71,30 @@ class Pessoa
     {
         $this->cidade = $cidade;
         return $this;
+    }
+
+    /* Métodos mágicas para getters e setters */
+    public function __get($propriedade){
+        if(property_exists($this, $propriedade)){
+            return $this->$propriedade;
+        }else{
+            trigger_error("A propriedade $propriedade não existe na classe Pessoa.", E_USER_NOTICE);
+            return null;
+        }
+    }
+
+    public function __set($propriedade, $valor){
+        if(property_exists($this, $propriedade)){
+            $this->$propriedade = $valor;
+        }else{
+            trigger_error("A propriedade $propriedade não existe na classe Pessoa.", E_USER_NOTICE);
+        }
+    }
+
+    // Método mágico para exibir informações
+    public function __toString()
+    {
+        return "Nome: {$this->nome}, Idade: {$this->idade}, Cidade: {$this->cidade}";
     }
 
 }
