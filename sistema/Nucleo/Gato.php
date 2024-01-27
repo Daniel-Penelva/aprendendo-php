@@ -7,7 +7,7 @@ class Gato extends Animal
     protected $cor;
 
     // Construtor
-    public function __construct($raca, $cor)
+    public function __construct($raca='', $cor='')
     {
         $this->raca = $raca;
         $this->cor = $cor;

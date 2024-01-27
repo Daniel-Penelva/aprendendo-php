@@ -5,6 +5,10 @@ include './sistema/Nucleo/Pessoa.php';
 include './sistema/Nucleo/Animal.php';
 include './sistema/Nucleo/Cachorro.php';
 include './sistema/Nucleo/Gato.php';
+include './sistema/Nucleo/Forma.php';
+include './sistema/Nucleo/Circulo.php';
+include './sistema/Nucleo/Retangulo.php';
+include './sistema/Nucleo/CalculadoraArea.php';
 
 // Criando uma instância da classe Pessoa
 $pessoa = new Pessoa();
@@ -128,3 +132,28 @@ $raca = $gato->getRaca();
 $cor  = $gato->getCor();
 
 echo "Nome: $nome, Raça: $raca, Cor: $cor";
+
+echo '<hr />';
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLIMORFISMO UTILIZANDO CLASSE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+$animalGato = new Gato();
+
+$animalGato->fazerSom();
+echo '<br />';
+$animalGato->arranharMoveis();
+
+
+echo '<hr />';
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLIMORFISMO UTILIZANDO INTERFACE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+// Exemplo de uso
+$circulo = new Circulo(5);
+$retangulo = new Retangulo(4, 6);
+
+$calculadora = new CalculadoraArea();
+
+// Chamando o método calcular da CalculadoraArea para diferentes objetos
+echo "Área do Círculo: " . $calculadora->calcular($circulo) . "\n";
+echo '<br />';
+echo "Área do Retângulo: " . $calculadora->calcular($retangulo) . "\n";
