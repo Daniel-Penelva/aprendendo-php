@@ -2,6 +2,9 @@
 
 include 'Helpers.php';
 include './sistema/Nucleo/Pessoa.php';
+include './sistema/Nucleo/Animal.php';
+include './sistema/Nucleo/Cachorro.php';
+include './sistema/Nucleo/Gato.php';
 
 // Criando uma instância da classe Pessoa
 $pessoa = new Pessoa();
@@ -36,9 +39,9 @@ echo '<hr />';
 $pessoa2 = new Pessoa();
 
 echo $pessoa2->definirNome("Bolsonaro")
-        -> definirIdade(68)
-        -> definirCidade("Minas Gerais")
-        -> exibirInformacao();
+        ->definirIdade(68)
+        ->definirCidade("Minas Gerais")
+        ->exibirInformacao();
 
 echo '<hr />';
 
@@ -47,17 +50,17 @@ echo '<hr />';
 situações.*/
 $pessoa2 = new Pessoa('João', 25, 'São Paulo');
 
-echo "Nome: " .$pessoa2->__get('nome') . '<br />'; // Usando o método mágico __get para obter o valor de uma propriedade
+echo "Nome: " . $pessoa2->__get('nome') . '<br />'; // Usando o método mágico __get para obter o valor de uma propriedade
 echo "Idade: " . $pessoa2->__get('idade') . '<br />';
 echo "Cidade: " . $pessoa2->__get('cidade') . '<br />';
 
 echo '<br />';
 
-$pessoa2 ->__set('nome', 'Kaio');
-$pessoa2 ->__set('idade', 30);
-$pessoa2 ->__set('cidade', 'Santa Catarina');
+$pessoa2->__set('nome', 'Kaio');
+$pessoa2->__set('idade', 30);
+$pessoa2->__set('cidade', 'Santa Catarina');
 
-echo "Nome: " .$pessoa2->__get('nome') . '<br />'; // Usando o método mágico __get para obter o valor de uma propriedade
+echo "Nome: " . $pessoa2->__get('nome') . '<br />'; // Usando o método mágico __get para obter o valor de uma propriedade
 echo "Idade: " . $pessoa2->__get('idade') . '<br />';
 echo "Cidade: " . $pessoa2->__get('cidade') . '<br />';
 
@@ -74,3 +77,54 @@ echo '<hr />';
 
 // Exemplo de encadeamento de da criação da classe e seus métodos.
 echo (new Pessoa())->definirNome("Ulisses")->definirIdade(23)->definirCidade('Maranhão');
+
+echo '<hr />';
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< HERANÇA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+// Criando SuperClasse
+
+$animal = new Animal();
+
+$animal->setNome('Rex');
+
+echo 'Nome:' . $animal->getNome();
+
+echo '<br />';
+// Ou pode criar por parametro pela classe
+$animal1 = new Animal('Tobby');
+echo 'Nome:' . $animal1->getNome();
+
+echo '<br />';
+// Ou pode criar pelo construtor
+$animal1->__construct('Toto');
+echo 'Nome:' . $animal1->getNome();
+
+echo '<hr />';
+// Criando a SubClasse
+
+$cachorro = new Cachorro();
+
+$cachorro->setNome("Bigodinho");
+$cachorro->setRaca("Pastor Alemão");
+$cachorro->setCor('Amarelo');
+
+// Outra forma de fazer, criando variavel.
+$nome = $cachorro->getNome();
+$raca = $cachorro->getRaca();
+$cor  = $cachorro->getCor();
+
+echo "Nome: $nome, Raça: $raca, Cor: $cor";
+
+echo '<br />';
+// Criando pela Classe - exemplo Gato
+
+$gato = new Gato('Siames', 'Cinza e preto');
+
+$gato->setNome("Chicao"); // essa propriedade pertence a super classe Animal
+
+$nome = $gato->getNome();
+$raca = $gato->getRaca();
+$cor  = $gato->getCor();
+
+echo "Nome: $nome, Raça: $raca, Cor: $cor";
