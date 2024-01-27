@@ -9,6 +9,10 @@ include './sistema/Nucleo/Forma.php';
 include './sistema/Nucleo/Circulo.php';
 include './sistema/Nucleo/Retangulo.php';
 include './sistema/Nucleo/CalculadoraArea.php';
+include './sistema/Nucleo/ExemploMinhaClasseNamespace.php';
+
+use sistema\Nucleo\ExemploMinhaClasseNamespace;
+use sistema\Nucleo\Pessoa;
 
 // Criando uma instância da classe Pessoa
 $pessoa = new Pessoa();
@@ -157,3 +161,15 @@ $calculadora = new CalculadoraArea();
 echo "Área do Círculo: " . $calculadora->calcular($circulo) . "\n";
 echo '<br />';
 echo "Área do Retângulo: " . $calculadora->calcular($retangulo) . "\n";
+
+echo '<hr />';
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Namespace >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+$minhaClasse = new ExemploMinhaClasseNamespace();
+$minhaClasse->__construct();
+
+/* Namespaces são uma forma de organizar e encapsular itens, como classes, funções e constantes, em grupos distintos para evitar conflitos de 
+nomes em grandes projetos ou entre bibliotecas. Eles ajudam a evitar colisões de nomes entre diferentes partes do código.
+Resumo: Suponha que você tenha as seguintes classes, Carro e Avião sem usar namespaces. Agora, imagine que você está integrando uma biblioteca 
+de terceiros que também possui classes chamadas Carro e Aviao. Para evitar conflitos de nomes, você pode usar namespaces. Ao declarar namespaces 
+em PHP, o caminho da pasta é frequentemente refletido na estrutura do namespace. */
