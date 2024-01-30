@@ -1,0 +1,20 @@
+{
+    "name": "daniel/aprendendophp8",
+    "description": "Aprendendo PHP 8",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "sistema\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel",
+            "email": "d4n.andrade@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0"
+    }
+}

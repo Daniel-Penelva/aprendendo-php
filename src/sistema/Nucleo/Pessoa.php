@@ -4,7 +4,6 @@ namespace sistema\Nucleo;
 
 class Pessoa
 {
-
     // Atributos da classe
     private $nome;
     private $idade;
@@ -76,19 +75,21 @@ class Pessoa
     }
 
     /* Métodos mágicas para getters e setters */
-    public function __get($propriedade){
-        if(property_exists($this, $propriedade)){
+    public function __get($propriedade)
+    {
+        if (property_exists($this, $propriedade)) {
             return $this->$propriedade;
-        }else{
+        } else {
             trigger_error("A propriedade $propriedade não existe na classe Pessoa.", E_USER_NOTICE);
             return null;
         }
     }
 
-    public function __set($propriedade, $valor){
-        if(property_exists($this, $propriedade)){
+    public function __set($propriedade, $valor)
+    {
+        if (property_exists($this, $propriedade)) {
             $this->$propriedade = $valor;
-        }else{
+        } else {
             trigger_error("A propriedade $propriedade não existe na classe Pessoa.", E_USER_NOTICE);
         }
     }
@@ -98,5 +99,4 @@ class Pessoa
     {
         return "Nome: {$this->nome}, Idade: {$this->idade}, Cidade: {$this->cidade}";
     }
-
 }
