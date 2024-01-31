@@ -1,0 +1,21 @@
+# Restringe a pasta vendor - link: http://localhost/blog/vendor/
+Options -indexes
+
+# IMPORTANTE! DOCUMENTAÇÃO DO APACHE MODULE mod_rewrite - site: https://httpd.apache.org/docs/current/mod/mod_rewrite.html
+# Trabalha com url amigável
+RewriteEngine On
+
+# Define a url base
+RewriteBase /blog
+
+# Estabelecer uma condição - %{SCRIPT_FILENAME}: É uma variável de servidor que representa o caminho físico para o script solicitado.
+RewriteCond %{SCRIPT_FILENAME} !-f # verifica se o caminho especificado na solicitação não corresponde a um arquivo físico existente
+RewriteCond %{SCRIPT_FILENAME} !-d # verifica se o caminho não corresponde a um diretório existente
+RewriteCond %{SCRIPT_FILENAME} !-l # verifica se o caminho não corresponde a um link simbólico
+
+RewriteRule ^(.*)$ index.php/$1 # Essa regra de reescrita redireciona qualquer solicitação para index.php e anexa a parte da URL após o nome do script
+
+# Explicando:
+# RewriteRule: Indica a regra de reescrita.
+# ^(.*)$: Isso corresponde a qualquer sequência de caracteres (.*) capturada entre o início (^) e o fim ($) da URL. O (.*) é um grupo de captura que pega qualquer coisa na URL.
+# index.php/$1: Isso reescreve a URL para index.php seguido pela parte capturada da URL ($1). O $1 representa o que foi capturado pelo grupo de captura (.*).
